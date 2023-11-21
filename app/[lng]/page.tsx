@@ -24,6 +24,9 @@ async function getData() {
       headers: {
         "Content-Type": "application/json",
       },
+      next: {
+        revalidate: 60,
+      },
     }
   );
 
