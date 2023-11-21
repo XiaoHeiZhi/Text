@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useTranslation } from "../i18n";
 
 export default async function Page({
@@ -7,14 +6,30 @@ export default async function Page({
   params: { lng: string };
 }) {
   const { t } = await useTranslation(lng);
+  const data = await getData();
   return (
     <>
       <h1 className="w-36 text-center text-red-200 inline-block">
         {t("title")}
       </h1>
-      {/* <Link href={`/${lng}/second-page`}>{t("to-second-page")}</Link> */}
-      {/* <br /> */}
-      {/* <Link href={`/${lng}/client-page`}>{t("to-client-page")}</Link> */}
+      <div>{data ? data.data.name : ""}</div>
     </>
   );
+}
+
+async function getData() {
+  const res = await fetch(
+    "https://web-yapi.company.druidtech.net/mock/196/test",
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Fail to fetch data");
+  }
+
+  return res.json();
 }
