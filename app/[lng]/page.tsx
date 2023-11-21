@@ -12,7 +12,7 @@ export default async function Page({
       <h1 className="w-36 text-center text-red-200 inline-block">
         {t("title")}
       </h1>
-      <div>{data ? data.data.name : ""}</div>
+      <div>{t(data && data.data.name)}</div>
     </>
   );
 }
