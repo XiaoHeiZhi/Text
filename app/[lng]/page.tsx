@@ -7,6 +7,7 @@ export default async function Page({
 }) {
   const { t } = await useTranslation(lng);
   const data = await getData();
+  
   return (
     <>
       <h1 className="w-36 text-center text-red-200 inline-block">
