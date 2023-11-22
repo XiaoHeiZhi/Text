@@ -40,7 +40,6 @@ export default function RootLayout({
       <head />
       <body>
         {children}
-        <Dark />
         <Footer lng={lng} />
       </body>
     </html>
